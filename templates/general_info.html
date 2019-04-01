@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+	<title> {{ pagetitle }}</title>
+{% endblock %}
+
+{% block pagename %}pagename{% endblock %}
+
+{% block head %}
+	<script language="JavaScript">
+		var messimsg;
+		var messititle;
+		var titleanimation;
+		
+		$(document).ready(function() {
+			if ((".divmessage").length) {
+				$(".divmessage").fadeIn('slow').animate({opacity: 1.0}, 1500).effect("pulsate", { times: 2 }, 800).fadeOut('slow'); 
+			}
+			
+			if ((".diverror").length) {
+				$(".diverror").fadeIn('slow').animate({opacity: 1.0}, 1500).effect("pulsate", { times: 2 }, 800); 
+			}
+		
+		displayActiveCHWDetails();
+
+		});
+
+
+
+		function displayActiveCHWDetails(){
+			$('#div_general_info').append('<p><b></b></p>' +
+
+								'<div style="clear:both; height:10px;"></div>' +
+
+								'<table id="tblgnrlinfo" class="table table-striped table-bordered table-condensed">');
+								
+								$('#tblgnrlinfo').append('<thead>' +
+									'<th>{% trans "Periode" %}</th><th>{% trans "Section" %}</th><th>{% trans "Indicator" %}</th><th>{% trans "Output" %}</th><th>{% trans "Target" %}</th><th>{% trans "Value" %}</th><th>{% trans "Partner" %}</th><th>{% trans "Report" %}</th>' +
+								'</thead>' +
+									
+								'<tbody>' +
+									
+								'</tbody>');
+
+								
+
+			var general_info = "{{rows|escapejs}}";
+			var table_data = JSON.parse(general_info);
+
+			console.log(table_data);
+
+			var periode, section, output, indicator, target, value;
+
+			for(i=0; i<table_data.length; i++){
+
+				periode = table_data[i]["periode_designation"];
+				section = table_data[i]["section_designation"];
+				indicator = table_data[i]["indicator_designation"];
+				output = table_data[i]["output_designation"];
+				target = table_data[i]["target_value"];
+				value = table_data[i]["value"];
+				partner = table_data[i]["related_partners"];
+				report = table_data[i]["related_reports"];
+
+				$('#tblgnrlinfo').find('tbody').append('<tr style="cursor:pointer;"></tr>');
+
+				$('#tblgnrlinfo tr:last').append('<td>' + periode +'</td>');
+				$('#tblgnrlinfo tr:last').append('<td>' + section +'</td>');
+				$('#tblgnrlinfo tr:last').append('<td>' + indicator +'</td>');
+				$('#tblgnrlinfo tr:last').append('<td>' + output +'</td>');
+				$('#tblgnrlinfo tr:last').append('<td>' + target +'</td>');
+				$('#tblgnrlinfo tr:last').append('<td>' + value +'</td>');
+				$('#tblgnrlinfo tr:last').append('<td>' + partner +'</td>');
+				$('#tblgnrlinfo tr:last').append('<td>' + report +'</td>');
+			}
+
+			$('#tblgnrlinfo').DataTable({
+										dom: "<'row'<'col-sm-3'l><'col-sm-4'i><'col-sm-5'f>>" +
+											"<'row'<'col-sm-12'tr>>" +
+											"<'row'<'col-sm-4'B><'col-sm-8'p>>",
+										pagingType: "full_numbers",
+										lengthMenu: [
+								            [10, 25, 50, 100, -1 ],
+								            ['10', '25', '50', '100', 'All' ]
+								        ],
+								        buttons: [
+								            'copy', 'csv', 'excel', 'pdf', 'print'
+								        ]
+									});
+
+
+		}
+	</script>
+{% endblock %}
+
+
+
+{% block container %}
+	<div>
+		{% if msg %}
+			<div class="divmessage"><p>{{ msg }}</p></div>
+		{% endif %}
+		{% if err %}
+			<div class="diverror"><p>{{ err }}</p></div>
+		{% endif %}
+
+		<div id="div_general_info" class="form-inline" style="padding-left :5px; padding-right :5px;">
+		<p><b>
+		</b></p>
+
+		<!--{{data}}-->
+
+		</div>
+
+	</div>
+{% endblock %}
