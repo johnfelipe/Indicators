@@ -134,6 +134,9 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, "static")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "staticfiles"),)
 
+LOGIN_REDIRECT_URL = "general_info"
+LOGIN_URL = "/login/"
+
 try:
     from localsettings import *
 except ImportError:

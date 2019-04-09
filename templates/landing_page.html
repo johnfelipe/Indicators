@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}
+	<title> {{ pagetitle }}</title>
+{% endblock %}
+
+{% block pagename %}pagename{% endblock %}
+
+{% block head %}
+	<script language="JavaScript">
+		var messimsg;
+		var messititle;
+		var titleanimation;
+		
+		$(document).ready(function() {
+			if ((".divmessage").length) {
+				$(".divmessage").fadeIn('slow').animate({opacity: 1.0}, 1500).effect("pulsate", { times: 2 }, 800).fadeOut('slow'); 
+			}
+			
+			if ((".diverror").length) {
+				$(".diverror").fadeIn('slow').animate({opacity: 1.0}, 1500).effect("pulsate", { times: 2 }, 800); 
+			}
+		});
+		
+	</script>
+{% endblock %}
+
+
+{% block container %}
+	<div>
+		{% if msg %}
+			<div class="divmessage"><p>{{ msg }}</p></div>
+		{% endif %}
+		{% if err %}
+			<div class="diverror"><p>{{ err }}</p></div>
+		{% endif %}
+	</div>
+	
+	<div>
+		<div class="content-wrapper" style="background-color: #ccffff; padding: 30px; border: solid; height: 450px;">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="">
+		                
+		            </div>
+				</div>
+				<div class="col-sm-8">
+					<!--<div class="rounded_2">-->
+					
+		            <!--</div>-->
+				</div>
+				<!--<div class="col-sm-4">
+					
+				</div>-->
+			</div>
+
+			<div class="row" style="background-color: #ccffff; padding-top: 10px;">
+				<div class="col-sm-2">
+					
+				</div>
+				<div class="col-sm-8">
+				</div>
+				<div class="col-sm-2">
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

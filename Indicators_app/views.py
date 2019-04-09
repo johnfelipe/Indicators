@@ -11,6 +11,9 @@ def date_handler(obj):
     else:
         raise TypeError
 
+def landing(request):
+    return render(request, "landing_page.html")
+
 @login_required
 def general_info(request):
 	d = {}
