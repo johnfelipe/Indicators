@@ -7,14 +7,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('Indicators_app', '0001_initial'),
-    ]
+    dependencies = [("Indicators_app", "0001_initial")]
 
     operations = [
         migrations.AddField(
-            model_name='output',
-            name='output_description',
+            model_name="output",
+            name="output_description",
             field=models.CharField(max_length=500, null=True),
-        ),
+        )
     ]

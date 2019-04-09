@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class IndicatorsAppConfig(AppConfig):
-    name = 'Indicators_app'
+    name = "Indicators_app"

@@ -6,11 +6,7 @@ from import_export.admin import ExportMixin
 
 class IndicatorSectionPeriodeAdmin(admin.ModelAdmin):
     actions = ["download_csv"]
-    list_display = [
-        "section",
-        "indicator",
-        "periode",
-    ]
+    list_display = ["section", "indicator", "periode"]
 
     def get_section_designation(self, obj):
         return obj.section.section_designation
@@ -24,7 +20,6 @@ class IndicatorSectionPeriodeAdmin(admin.ModelAdmin):
     get_section_designation.short_description = "Section"
     get_indicator_designation.short_description = "Indicator"
     get_periode_designation.short_description = "Periode"
-
 
     list_filter = ("section__section_designation", "periode__periode_designation")
 
@@ -65,17 +60,13 @@ class IndicatorSectionPeriodeAdmin(admin.ModelAdmin):
     get_target_value.short_description = "Target"
     get_value.short_description = "Value"
 
-
     list_filter = ("section__section_designation", "periode__periode_designation")
 
 
 class InvolvedPartnerAdmin(admin.ModelAdmin):
     actions = ["download_csv"]
-    list_display = [
-        "indicator",
-        "partner",
-        "results",
-    ]
+    list_display = ["indicator", "partner", "results"]
+
     def get_indicator_designation(self, obj):
         return obj.indicator.indicator.indicator_designation
 
@@ -89,87 +80,80 @@ class InvolvedPartnerAdmin(admin.ModelAdmin):
     get_partner_designation.short_description = "Partner"
     get_partner_results.short_description = "Results"
 
-    list_filter = ("partner__partner_designation", "indicator__section__section_designation", "results")
+    list_filter = (
+        "partner__partner_designation",
+        "indicator__section__section_designation",
+        "results",
+    )
 
 
 class ConcernedReportAdmin(admin.ModelAdmin):
-	actions = ["download_csv"]
-	list_display = [
-		"indicator",
-		"report",
-		]
+    actions = ["download_csv"]
+    list_display = ["indicator", "report"]
 
-	def get_indicator_designation(self, obj):
-		return obj.indicator.indicator.indicator_designation
+    def get_indicator_designation(self, obj):
+        return obj.indicator.indicator.indicator_designation
 
-	def get_report_designation(self, obj):
-		return obj.report.report_designation
+    def get_report_designation(self, obj):
+        return obj.report.report_designation
 
-	get_indicator_designation.short_description = "Indicator"
-	get_report_designation.short_description = "Report"
+    get_indicator_designation.short_description = "Indicator"
+    get_report_designation.short_description = "Report"
 
-	list_filter = ("report__report_designation", "indicator__section__section_designation")
+    list_filter = (
+        "report__report_designation",
+        "indicator__section__section_designation",
+    )
 
 
 class ReportAdmin(admin.ModelAdmin):
-	actions = ["download_csv"]
+    actions = ["download_csv"]
 
-	list_display = [
-		"report_designation",
-		]
+    list_display = ["report_designation"]
 
-	def get_report_designation(self, obj):
-		return obj.report_designation
+    def get_report_designation(self, obj):
+        return obj.report_designation
 
-	get_report_designation.short_description = "Report"
+    get_report_designation.short_description = "Report"
 
 
 class SectionAdmin(admin.ModelAdmin):
-	actions = ["download_csv"]
+    actions = ["download_csv"]
 
-	list_display = [
-		"section_designation",
-		]
+    list_display = ["section_designation"]
 
-	def get_section_designation(self, obj):
-		return obj.section_designation
+    def get_section_designation(self, obj):
+        return obj.section_designation
 
-	get_section_designation.short_description = "Section"
+    get_section_designation.short_description = "Section"
 
 
 class IndicatorAdmin(admin.ModelAdmin):
-	actions = ["download_csv"]
+    actions = ["download_csv"]
 
-	list_display = [
-		"indicator_designation",
-		]
+    list_display = ["indicator_designation"]
 
-	def get_indicator_designation(self, obj):
-		return obj.indicator_designation
+    def get_indicator_designation(self, obj):
+        return obj.indicator_designation
 
-	get_indicator_designation.short_description = "Indicator"
+    get_indicator_designation.short_description = "Indicator"
 
 
 class PeriodeAdmin(admin.ModelAdmin):
-	actions = ["download_csv"]
+    actions = ["download_csv"]
 
-	list_display = [
-		"periode_designation",
-		]
+    list_display = ["periode_designation"]
 
-	def get_periode_designation(self, obj):
-		return obj.periode_designation
+    def get_periode_designation(self, obj):
+        return obj.periode_designation
 
-	get_periode_designation.short_description = "Periode"
+    get_periode_designation.short_description = "Periode"
 
 
 class OutputAdmin(admin.ModelAdmin):
     actions = ["download_csv"]
 
-    list_display = [
-        "output_designation",
-        "output_description",
-        ]
+    list_display = ["output_designation", "output_description"]
 
     def get_output_designation(self, obj):
         return obj.output_designation
@@ -182,16 +166,14 @@ class OutputAdmin(admin.ModelAdmin):
 
 
 class PartnerAdmin(admin.ModelAdmin):
-	actions = ["download_csv"]
+    actions = ["download_csv"]
 
-	list_display = [
-		"partner_designation",
-		]
+    list_display = ["partner_designation"]
 
-	def get_partner_designation(self, obj):
-		return obj.partner_designation
+    def get_partner_designation(self, obj):
+        return obj.partner_designation
 
-	get_partner_designation.short_description = "Partner"
+    get_partner_designation.short_description = "Partner"
 
 
 admin.site.register(Section, SectionAdmin)

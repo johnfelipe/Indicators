@@ -10,103 +10,199 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='ConcernedReport',
+            name="ConcernedReport",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                )
             ],
         ),
         migrations.CreateModel(
-            name='Indicator',
+            name="Indicator",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('indicator_designation', models.CharField(max_length=500)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("indicator_designation", models.CharField(max_length=500)),
             ],
         ),
         migrations.CreateModel(
-            name='IndicatorSectionPeriode',
+            name="IndicatorSectionPeriode",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('target_value', models.CharField(max_length=100, null=True)),
-                ('value', models.CharField(max_length=100, null=True)),
-                ('indicator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.Indicator')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("target_value", models.CharField(max_length=100, null=True)),
+                ("value", models.CharField(max_length=100, null=True)),
+                (
+                    "indicator",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="Indicators_app.Indicator",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='InvolvedPartner',
+            name="InvolvedPartner",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('results', models.CharField(max_length=100, null=True)),
-                ('indicator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.IndicatorSectionPeriode')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("results", models.CharField(max_length=100, null=True)),
+                (
+                    "indicator",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="Indicators_app.IndicatorSectionPeriode",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Output',
+            name="Output",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('output_designation', models.CharField(max_length=500)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("output_designation", models.CharField(max_length=500)),
             ],
         ),
         migrations.CreateModel(
-            name='Partner',
+            name="Partner",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('partner_designation', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("partner_designation", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Periode',
+            name="Periode",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('periode_designation', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("periode_designation", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Report',
+            name="Report",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('report_designation', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("report_designation", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Section',
+            name="Section",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('section_designation', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("section_designation", models.CharField(max_length=200)),
             ],
         ),
         migrations.AddField(
-            model_name='involvedpartner',
-            name='partner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.Partner'),
+            model_name="involvedpartner",
+            name="partner",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="Indicators_app.Partner"
+            ),
         ),
         migrations.AddField(
-            model_name='indicatorsectionperiode',
-            name='output',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.Output'),
+            model_name="indicatorsectionperiode",
+            name="output",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="Indicators_app.Output"
+            ),
         ),
         migrations.AddField(
-            model_name='indicatorsectionperiode',
-            name='periode',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.Periode'),
+            model_name="indicatorsectionperiode",
+            name="periode",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="Indicators_app.Periode"
+            ),
         ),
         migrations.AddField(
-            model_name='indicatorsectionperiode',
-            name='section',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.Section'),
+            model_name="indicatorsectionperiode",
+            name="section",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="Indicators_app.Section"
+            ),
         ),
         migrations.AddField(
-            model_name='concernedreport',
-            name='indicator',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.IndicatorSectionPeriode'),
+            model_name="concernedreport",
+            name="indicator",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="Indicators_app.IndicatorSectionPeriode",
+            ),
         ),
         migrations.AddField(
-            model_name='concernedreport',
-            name='report',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Indicators_app.Report'),
+            model_name="concernedreport",
+            name="report",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="Indicators_app.Report"
+            ),
         ),
     ]
