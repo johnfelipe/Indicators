@@ -16,6 +16,19 @@ def landing(request):
     return render(request, "landing_page.html")
 
 
+def home(request):
+    d = dict()
+    d["pagetitle"] = "Choose Sections"
+    return render(request, "home.html", d)
+
+
+def wash(request):
+    d = dict()
+    d["pagetitle"] = "Choose Sections"
+    return render(request, "wash.html", d)
+
+
+
 @login_required
 def general_info(request):
     d = {}
