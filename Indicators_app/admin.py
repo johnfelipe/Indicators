@@ -28,49 +28,6 @@ class IndicatorSectionPeriodeAdmin(admin.ModelAdmin):
 
     list_filter = ("section__section_designation", "periode__periode_designation")
 
-    '''def download_csv(self, request, queryset):
-        import csv
-        from django.http import HttpResponse
-        import StringIO
-
-        f = StringIO.StringIO()
-        writer = csv.writer(f)
-        writer.writerow(
-            [
-                "CHW Phone Number",
-                "Supervisor Phone Number",
-                "CDS Name",
-                "CDS Code",
-                "Sub Colline",
-                "Colline",
-                "District",
-                "BPS",
-            ]
-        )
-
-        for s in queryset:
-            print type(s.cds.code)
-            writer.writerow(
-                [
-                    s.phone_number,
-                    s.supervisor_phone_number,
-                    s.cds.name.encode("utf-8"),
-                    s.cds.code,
-                    s.sub_colline,
-                    s.sub_colline.colline,
-                    s.cds.district,
-                    s.cds.district.bps,
-                ]
-            )
-
-        f.seek(0)
-
-        response = HttpResponse(f, content_type="text/csv")
-        response["Content-Disposition"] = "attachment; filename=chws.csv"
-        return response'''
-
-    #download_csv.short_description = "Download"
-
 
 class IndicatorSectionPeriodeAdmin(admin.ModelAdmin):
     actions = ["download_csv"]
