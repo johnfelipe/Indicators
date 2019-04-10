@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+	<title> WASH</title>
+{% endblock %}
+
+{% block pagename %}WASH{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+
+{% block container %}
+{% if user.is_authenticated %}
+  <div class="row">
+    Infos wash
+  </div>
+{% endif %}
+{% endblock %}
