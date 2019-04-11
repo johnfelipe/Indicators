@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'Indicators_app_periode_list' %}">Periode Listing</a></p>
+<table class="table">
+<tr><td>periode_designation</td><td>{{ object.periode_designation }}</td></tr>
+</table>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit Periode</a>
+
+{% endblock %}

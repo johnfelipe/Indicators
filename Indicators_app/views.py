@@ -3,6 +3,171 @@ from Indicators_app.models import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
 import json
+from django.views.generic import DetailView, ListView, UpdateView, CreateView
+from .forms import *
+
+
+class SectionListView(ListView):
+    model = Section
+
+
+class SectionCreateView(CreateView):
+    model = Section
+    form_class = SectionForm
+
+
+class SectionDetailView(DetailView):
+    model = Section
+
+
+class SectionUpdateView(UpdateView):
+    model = Section
+    form_class = SectionForm
+
+
+class IndicatorListView(ListView):
+    model = Indicator
+
+
+class IndicatorCreateView(CreateView):
+    model = Indicator
+    form_class = IndicatorForm
+
+
+class IndicatorDetailView(DetailView):
+    model = Indicator
+
+
+class IndicatorUpdateView(UpdateView):
+    model = Indicator
+    form_class = IndicatorForm
+
+
+class PeriodeListView(ListView):
+    model = Periode
+
+
+class PeriodeCreateView(CreateView):
+    model = Periode
+    form_class = PeriodeForm
+
+
+class PeriodeDetailView(DetailView):
+    model = Periode
+
+
+class PeriodeUpdateView(UpdateView):
+    model = Periode
+    form_class = PeriodeForm
+
+
+class OutputListView(ListView):
+    model = Output
+
+
+class OutputCreateView(CreateView):
+    model = Output
+    form_class = OutputForm
+
+
+class OutputDetailView(DetailView):
+    model = Output
+
+
+class OutputUpdateView(UpdateView):
+    model = Output
+    form_class = OutputForm
+
+
+class IndicatorSectionPeriodeListView(ListView):
+    model = IndicatorSectionPeriode
+
+
+class IndicatorSectionPeriodeCreateView(CreateView):
+    model = IndicatorSectionPeriode
+    form_class = IndicatorSectionPeriodeForm
+
+
+class IndicatorSectionPeriodeDetailView(DetailView):
+    model = IndicatorSectionPeriode
+
+
+class IndicatorSectionPeriodeUpdateView(UpdateView):
+    model = IndicatorSectionPeriode
+    form_class = IndicatorSectionPeriodeForm
+
+
+class PartnerListView(ListView):
+    model = Partner
+
+
+class PartnerCreateView(CreateView):
+    model = Partner
+    form_class = PartnerForm
+
+
+class PartnerDetailView(DetailView):
+    model = Partner
+
+
+class PartnerUpdateView(UpdateView):
+    model = Partner
+    form_class = PartnerForm
+
+
+class ReportListView(ListView):
+    model = Report
+
+
+class ReportCreateView(CreateView):
+    model = Report
+    form_class = ReportForm
+
+
+class ReportDetailView(DetailView):
+    model = Report
+
+
+class ReportUpdateView(UpdateView):
+    model = Report
+    form_class = ReportForm
+
+
+class InvolvedPartnerListView(ListView):
+    model = InvolvedPartner
+
+
+class InvolvedPartnerCreateView(CreateView):
+    model = InvolvedPartner
+    form_class = InvolvedPartnerForm
+
+
+class InvolvedPartnerDetailView(DetailView):
+    model = InvolvedPartner
+
+
+class InvolvedPartnerUpdateView(UpdateView):
+    model = InvolvedPartner
+    form_class = InvolvedPartnerForm
+
+
+class ConcernedReportListView(ListView):
+    model = ConcernedReport
+
+
+class ConcernedReportCreateView(CreateView):
+    model = ConcernedReport
+    form_class = ConcernedReportForm
+
+
+class ConcernedReportDetailView(DetailView):
+    model = ConcernedReport
+
+
+class ConcernedReportUpdateView(UpdateView):
+    model = ConcernedReport
+    form_class = ConcernedReportForm
+
 
 
 def date_handler(obj):

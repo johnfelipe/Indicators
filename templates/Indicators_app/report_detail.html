@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'Indicators_app_report_list' %}">Report Listing</a></p>
+<table class="table">
+<tr><td>report_designation</td><td>{{ object.report_designation }}</td></tr>
+</table>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit Report</a>
+
+{% endblock %}

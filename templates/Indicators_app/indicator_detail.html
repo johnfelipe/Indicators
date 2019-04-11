@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'Indicators_app_indicator_list' %}">Indicator Listing</a></p>
+<table class="table">
+<tr><td>indicator_designation</td><td>{{ object.indicator_designation }}</td></tr>
+</table>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit Indicator</a>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<p><a class="btn btn-default" href="{% url 'Indicators_app_partner_list' %}">Partner Listing</a></p>
+<table class="table">
+<tr><td>partner_designation</td><td>{{ object.partner_designation }}</td></tr>
+</table>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Edit Partner</a>
+
+{% endblock %}
