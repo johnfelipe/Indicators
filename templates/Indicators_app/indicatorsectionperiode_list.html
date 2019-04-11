@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<p><a class="btn btn-default" href="{% url 'Indicators_app_indicatorsectionperiode_list' %}">IndicatorSectionPeriode Listing</a></p>
+<p><a class="btn btn-default" href="{% url 'indicators:Indicators_app_indicatorsectionperiode_list' %}">IndicatorSectionPeriode Listing</a></p>
 <table class="table">
 <tr>
 <td>ID</td><td>Link</td>
@@ -16,5 +16,5 @@
     <td>{{ object.value }}</td>
 </tr>
 {% endfor %}
-</table><a class="btn btn-primary" href="{% url 'Indicators_app_indicatorsectionperiode_create' %}">Create new IndicatorSectionPeriode</a>
+</table><a class="btn btn-primary" href="{% url 'indicators:Indicators_app_indicatorsectionperiode_create' %}">Create new IndicatorSectionPeriode</a>
 {% endblock %}

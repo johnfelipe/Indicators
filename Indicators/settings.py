@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "crispy_forms",
     "rest_framework_datatables",
     "import_export",
     "Indicators_app",

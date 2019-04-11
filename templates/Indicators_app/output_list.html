@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<p><a class="btn btn-default" href="{% url 'Indicators_app_output_list' %}">Output Listing</a></p>
+<p><a class="btn btn-default" href="{% url 'indicators:Indicators_app_output_list' %}">Output Listing</a></p>
 <table class="table">
 <tr>
 <td>ID</td><td>Link</td>
@@ -16,5 +16,5 @@
     <td>{{ object.output_description }}</td>
 </tr>
 {% endfor %}
-</table><a class="btn btn-primary" href="{% url 'Indicators_app_output_create' %}">Create new Output</a>
+</table><a class="btn btn-primary" href="{% url 'indicators:Indicators_app_output_create' %}">Create new Output</a>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<p><a class="btn btn-default" href="{% url 'Indicators_app_output_list' %}">Output Listing</a></p>
+<p><a class="btn btn-default" href="{% url 'indicators:Indicators_app_output_list' %}">Output Listing</a></p>
 <table class="table">
 <tr><td>output_designation</td><td>{{ object.output_designation }}</td></tr>
 <tr><td>output_description</td><td>{{ object.output_description }}</td></tr>
