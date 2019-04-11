@@ -15,8 +15,8 @@ class Section(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return self.section_designation
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_section_detail', args=(self.pk,))
@@ -35,8 +35,8 @@ class Indicator(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return self.indicator_designation
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_indicator_detail', args=(self.pk,))
@@ -55,8 +55,8 @@ class Periode(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return self.periode_designation
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_periode_detail', args=(self.pk,))
@@ -76,8 +76,8 @@ class Output(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return "{0} - {1}".format(self.output_designation, self.output_description)
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_output_detail', args=(self.pk,))
@@ -114,8 +114,10 @@ class IndicatorSectionPeriode(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return "{0} - {1} - {2} - {3}".format(
+            self.section, self.indicator, self.periode, self.value
+        )
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_indicatorsectionperiode_detail', args=(self.pk,))
@@ -134,8 +136,8 @@ class Partner(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return self.partner_designation
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_partner_detail', args=(self.pk,))
@@ -154,8 +156,8 @@ class Report(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return self.report_designation
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_report_detail', args=(self.pk,))
@@ -183,8 +185,8 @@ class InvolvedPartner(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return "{0} - {1}".format(self.indicator, self.partner)
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_involvedpartner_detail', args=(self.pk,))
@@ -210,8 +212,8 @@ class ConcernedReport(models.Model):
     class Meta:
         ordering = ('-pk',)
 
-    def __unicode__(self):
-        return u'%s' % self.pk
+    def __str__(self):
+        return "{0} - {1}".format(self.indicator, self.report)
 
     def get_absolute_url(self):
         return reverse('indicators:Indicators_app_concernedreport_detail', args=(self.pk,))
