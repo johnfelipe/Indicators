@@ -1,19 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block jqueries %}
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>    
-{% endblock jqueries %}
-{% block datatables %}
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">    
-{% endblock datatables %}
 {% block content %}
-<p>
+<div class="row">
+    <div>
     <a class="btn btn-default" href="{% url 'indicators:Indicators_app_section_list' %}">Section Listing
     </a>
-</p>
+    <a class="btn btn-primary" href="{{object.get_update_url}}">Edit Section</a>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -51,18 +46,14 @@
             serverSide: true,
             ajax: {
                 url: "{% url "indicators:indicatorsectionperiode-list" %}?format=datatables",
-                cache: true,
-                data: function(d){
-                    console.log(d);
-                }
             },
             columns: [
                   {'data': 'pk'},
                   {'data': 'target_value'},
-                  {'data': 'section'},
-                  {'data': 'indicator'},
-                  {'data': 'periode'},
-                  {'data': 'output'}
+                  {'data': 'section',  'name': 'section.section_designation'},
+                  {'data': 'indicator',  'name': 'indicator.indicator_designation'},
+                  {'data': 'periode',  'name': 'periode.periode_designation'},
+                  {'data': 'output',  'name': 'output.output_designation, output.output_description'}
               ]
 
         }
@@ -70,6 +61,5 @@
   });
 </script>
 
-<a class="btn btn-primary" href="{{object.get_update_url}}">Edit Section</a>
 
 {% endblock %}
