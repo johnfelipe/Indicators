@@ -46,12 +46,34 @@ class OutputSerializer(serializers.ModelSerializer):
 
 class IndicatorSectionPeriodeSerializer(serializers.ModelSerializer):
 
+    section = serializers.SerializerMethodField()
+    indicator = serializers.SerializerMethodField()
+    periode = serializers.SerializerMethodField()
+    output =  serializers.SerializerMethodField()
+
+    def get_section(self, indicsecper):
+        return indicsecper.section.section_designation
+
+    def get_indicator(self, indicsecper):
+        return indicsecper.indicator.indicator_designation
+
+    def get_periode(self, indicsecper):
+        return indicsecper.periode.periode_designation
+
+    def get_output(self, indicsecper):
+        return "{0} - {1}".format(indicsecper.output.output_designation, indicsecper.output.output_description)
+
+
     class Meta:
         model = models.IndicatorSectionPeriode
         fields = (
             'pk', 
             'target_value', 
-            'value', 
+            'value',
+            'section',
+            'indicator',
+            'periode',
+            'output', 
         )
 
 
@@ -94,3 +116,13 @@ class ConcernedReportSerializer(serializers.ModelSerializer):
         )
 
 
+
+class IndicatorMatrix(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = models.ConcernedReport
+        fields = (
+            'indicator', 
+            'report', 
+        )

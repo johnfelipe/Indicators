@@ -1,10 +1,75 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block jqueries %}
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>    
+{% endblock jqueries %}
+{% block datatables %}
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">    
+{% endblock datatables %}
 {% block content %}
-<p><a class="btn btn-default" href="{% url 'indicators:Indicators_app_section_list' %}">Section Listing</a></p>
+<p>
+    <a class="btn btn-default" href="{% url 'indicators:Indicators_app_section_list' %}">Section Listing
+    </a>
+</p>
 <table class="table">
-<tr><td>section_designation</td><td>{{ object.section_designation }}</td></tr>
+    <thead>
+        <tr>
+            <td>Section Designation</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.section_designation }}</td>
+        </tr>
+    </tbody>
 </table>
+
+<div class="row">
+        <div class="col-sm-12">
+            <table id="albums" class="table table-striped table-bordered" >
+                  <thead>
+                    <tr>
+                        <th >ID</th>
+                        <th >Target Value</th>
+                        <th >Section</th>
+                        <th >Indicator</th>
+                        <th >Periode</th>
+                        <th >Output</th>
+                    </tr>
+                  </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+  $(document).ready(function() {
+      $('#albums').DataTable(
+        {
+            serverSide: true,
+            ajax: {
+                url: "{% url "indicators:indicatorsectionperiode-list" %}?format=datatables",
+                cache: true,
+                data: function(d){
+                    console.log(d);
+                }
+            },
+            columns: [
+                  {'data': 'pk'},
+                  {'data': 'target_value'},
+                  {'data': 'section'},
+                  {'data': 'indicator'},
+                  {'data': 'periode'},
+                  {'data': 'output'}
+              ]
+
+        }
+        );
+  });
+</script>
+
 <a class="btn btn-primary" href="{{object.get_update_url}}">Edit Section</a>
 
 {% endblock %}

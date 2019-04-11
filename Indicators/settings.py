@@ -28,7 +28,7 @@ SECRET_KEY = "l42-mvc@tm8$y@yjephay@^72j$1z--a7q7mq5qzj3gs58!efj"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".unicefburundi.org", ".ngrok.io", "127.0.0.1"]
 
 
 # Application definition
@@ -137,6 +137,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework_datatables.renderers.DatatablesRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework_datatables.filters.DatatablesFilterBackend',
