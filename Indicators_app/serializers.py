@@ -50,6 +50,7 @@ class IndicatorSectionPeriodeSerializer(serializers.ModelSerializer):
     indicator = serializers.SerializerMethodField()
     periode = serializers.SerializerMethodField()
     output =  serializers.SerializerMethodField()
+    partner = serializers.SerializerMethodField()
 
     def get_section(self, indicsecper):
         return indicsecper.section.section_designation
@@ -63,6 +64,9 @@ class IndicatorSectionPeriodeSerializer(serializers.ModelSerializer):
     def get_output(self, indicsecper):
         return "{0} - {1}".format(indicsecper.output.output_designation, indicsecper.output.output_description)
 
+    def get_partner(self, indicsecper):
+        return ', '.join([str(partner.partner.partner_designation) for partner in models.InvolvedPartner.objects.filter(indicator=indicsecper)])
+
 
     class Meta:
         model = models.IndicatorSectionPeriode
@@ -73,7 +77,8 @@ class IndicatorSectionPeriodeSerializer(serializers.ModelSerializer):
             'section',
             'indicator',
             'periode',
-            'output', 
+            'output',
+            'partner', 
         )
 
 

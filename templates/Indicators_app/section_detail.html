@@ -28,11 +28,13 @@
                   <thead>
                     <tr>
                         <th >ID</th>
-                        <th >Target Value</th>
-                        <th >Section</th>
-                        <th >Indicator</th>
                         <th >Periode</th>
                         <th >Output</th>
+                        <th >Indicator</th>
+                        <th >Target Value</th>
+                        <th >Current Value </th>
+                        <th >Section</th>
+                        <th >Partners</th>
                     </tr>
                   </thead>
             </table>
@@ -43,18 +45,30 @@
   $(document).ready(function() {
       $('#albums').DataTable(
         {
-            serverSide: true,
             ajax: {
-                url: "{% url "indicators:indicatorsectionperiode-list" %}?format=datatables",
+                url: "{% url "indicators:indicatorsectionperiode-list" %}?format=datatables&section={{object.id}}",
             },
             columns: [
                   {'data': 'pk'},
-                  {'data': 'target_value'},
-                  {'data': 'section',  'name': 'section.section_designation'},
-                  {'data': 'indicator',  'name': 'indicator.indicator_designation'},
                   {'data': 'periode',  'name': 'periode.periode_designation'},
-                  {'data': 'output',  'name': 'output.output_designation, output.output_description'}
-              ]
+                  {'data': 'output',  'name': 'output.output_designation, output.output_description'},
+                  {'data': 'indicator',  'name': 'indicator.indicator_designation'},
+                  {'data': 'target_value'},
+                  {'data': 'value'},
+                  {'data': 'section',  'name': 'section.section_designation'},
+                  {'data': 'partner',  'name': 'partner'}
+              ],
+            dom: "<'row'<'col-sm-3'l><'col-sm-4'i><'col-sm-5'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-4'B><'col-sm-8'p>>",
+            pagingType: "full_numbers",
+            lengthMenu: [
+                [10, 25, 50, 100, -1 ],
+                ['10', '25', '50', '100', 'All' ]
+            ],
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
 
         }
         );

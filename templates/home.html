@@ -32,102 +32,23 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <div class="row">
-  <div class="col-md-12">
-    <div class="row space-16">&nbsp;</div>
-    <div class="row">
+<div class="row">
+  {% for section in sections  %}
       <div class="col-sm-2">
         <div class="thumbnail">
-          <div class="caption text-center" onclick="location.href='{% url "wash" %}'">
+          <div class="caption text-center" onclick="location.href='{% url "indicators:Indicators_app_section_detail" pk=section.id %}'">
             <div class="position-relative">
-              <img src="http://lorempixel.com/72/72/food"  />
+              <img src="https://via.placeholder.com/72"/>
             </div>
-            <h4 id="thumbnail-label"><a href="{% url "wash" %}" target="_blank">SANTE & NUTRITION </a></h4>
-          </div>
-          <div class="caption card-footer text-center">
-            <ul class="list-inline">             
-              <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
-            </ul>
+            <h4 id="thumbnail-label">
+              <a href="{% url "indicators:Indicators_app_section_detail" pk=section.id %}" target="_blank">
+                {{section}}
+              </a>
+            </h4>
           </div>
         </div>
       </div>
-      <div class="col-sm-2">
-        <div class="thumbnail">
-          <div class="caption text-center" onclick="location.href='{% url "wash" %}'">
-            <div class="position-relative">
-              <img src="http://lorempixel.com/72/72/people"  />
-            </div>
-            <h4 id="thumbnail-label"><a href="{% url "wash" %}" target="_blank">EDUCATION</a></h4>
-          </div>
-          <div class="caption card-footer text-center">
-            <ul class="list-inline">
-              <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="thumbnail">
-          <div class="caption text-center" onclick="location.href='{% url "indicators:Indicators_app_section_detail" pk=1 %}'">
-            <div class="position-relative">
-              <img src="http://lorempixel.com/72/72/nature"  />
-            </div>
-            <h4 id="thumbnail-label"><a href="{% url "indicators:Indicators_app_section_detail" pk=1 %}" target="_blank">WASH</a></h4>
-          </div>
-          <div class="caption card-footer text-center">
-            <ul class="list-inline">
-              <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="thumbnail">
-          <div class="caption text-center" onclick="location.href='{% url "wash" %}'">
-            <div class="position-relative">
-              <img src="http://lorempixel.com/72/72/nightlife"  />
-            </div>
-            <h4 id="thumbnail-label"><a href="{% url "wash" %}" target="_blank"> Autonomisation des adolescents et résilience communautaire</a></h4>
-          </div>
-          <div class="caption card-footer text-center">
-            <ul class="list-inline">
-              <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="thumbnail">
-          <div class="caption text-center" onclick="location.href='{% url "wash" %}'">
-            <div class="position-relative">
-              <img src="http://lorempixel.com/72/72/business"  />
-            </div>
-            <h4 id="thumbnail-label"><a href="{% url "wash" %}" target="_blank">Politique sociale et plaidoyer</a></h4>
-          </div>
-          <div class="caption card-footer text-center">
-            <ul class="list-inline">
-              <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div class="thumbnail">
-          <div class="caption text-center" onclick="location.href='{% url "wash" %}'">
-            <div class="position-relative">
-              <img src="http://lorempixel.com/72/72/technics"  />
-            </div>
-            <h4 id="thumbnail-label"><a href="{% url "wash" %}" target="_blank">PROTECTION DE L'ENFANCE</a></h4>
-          </div>
-          <div class="caption card-footer text-center">
-            <ul class="list-inline">
-              <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    {% endfor %}  
 </div>
 {% endif %}
 {% endblock %}

@@ -5,6 +5,7 @@ from django.db.models import F
 import json
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from .forms import *
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class SectionListView(ListView):
@@ -81,6 +82,8 @@ class OutputUpdateView(UpdateView):
 
 class IndicatorSectionPeriodeListView(ListView):
     model = IndicatorSectionPeriode
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('indicator', 'section')
 
 
 class IndicatorSectionPeriodeCreateView(CreateView):
@@ -184,6 +187,7 @@ def landing(request):
 def home(request):
     d = dict()
     d["pagetitle"] = "Choose Sections"
+    d["sections"] = Section.objects.all()
     return render(request, "home.html", d)
 
 
